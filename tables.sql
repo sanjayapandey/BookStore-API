@@ -27,3 +27,13 @@ CREATE TABLE `purchase` (
   CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `books` (`ISBN`),
   CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
 )
+CREATE TABLE `cart` (
+  `cart_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `ISBN` varchar(20) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  PRIMARY KEY (`cart_id`),
+  UNIQUE KEY `ISBN_CUSTOMER` (`ISBN`,`customer_id`),
+  KEY `ISBN` (`ISBN`),
+  KEY `customer_id` (`customer_id`)
+)
